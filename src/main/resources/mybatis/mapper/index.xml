@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.lfd.mapper.IndexMapper">
+  <resultMap type="S_User" id="S_UserMap">
+  <id property="s_id" column="s_id"/>
+  <result property="s_name" column="s_name"/>
+  <result property="s_password" column="s_password"/>
+  <result property="s_pnum" column="s_pnum"/>
+  <result property="s_pemail" column="s_pemail"/>
+  <result property="s_txjpg" column="s_txjpg"/>
+  </resultMap>
+
+
+  <!-- 用于展示的管理员页面-->
+  <select id="getPermission" resultMap="S_UserMap">
+    select s_id,s_name,s_status from Sz_user
+  </select>
+  <!--禁言用户-->
+  <update id="banned" parameterType="S_User">
+    update Sz_User set s_status = 0 where s_id = #{s_id}
+  </update>
+  <!--解除禁言-->
+  <update id="belease" parameterType="S_User">
+    update Sz_User set s_status = 1 where s_id = #{s_id}
+  </update>
+
+  <!-- 查询所有用户信息 -->
+  <select id="getUser" resultMap="S_UserMap">
+  SELECT * FROM Sz_User
+  </select>
+  <!-- 用户信息注册 -->
+  <insert id="intZc">
+  insert into Sz_User (s_id,s_name,s_password,s_pnum,s_pemail,s_txjpg) values (s_id,#{s_name},#{s_password},#{s_pnum},#{s_pemail},'images/用户图标.png'); 
+  </insert>
+  <!-- 用户登陆确认 -->
+  <select id="login" resultMap="S_UserMap">
+  SELECT * FROM Sz_User where s_name = #{s_name} and s_password = #{s_password}
+  </select>
+  <!-- 根据用户名查询用户检测是否重复 -->
+  <select id="sName" resultMap="S_UserMap">
+  select * from Sz_User where s_name = #{s_name}
+  </select>
+  <!-- 根据邮箱查询用户检测是否重复 -->
+  <select id="sEmail" resultMap="S_UserMap">
+  select * from Sz_User where s_pemail = #{s_pemail}
+  </select>
+  <!-- 根据ID查询用户信息 -->
+  <select id="sId" resultMap="S_UserMap">
+  select * from Sz_User where s_id = #{s_id}
+  </select>
+  <!-- 用户信息更新 -->
+  <update id="intUp" parameterType="S_User">
+  update Sz_User set s_name = #{s_name},s_pnum = 10086,s_pemail = #{s_pemail} where s_id = #{s_id}
+  </update>
+  <!-- 用户头像更新 -->
+  <update id="intjpg" parameterType="S_User">
+  update Sz_User set s_txjpg = #{s_txjpg} where s_id = #{s_id}
+  </update>
+</mapper>

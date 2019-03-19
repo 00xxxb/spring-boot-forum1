@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+  #img1{
+     margin:margin-top: 100px;
+
+       }
+  #login-box{
+     background:white;
+     color:white;
+     width: 300px;
+     height: 200px;
+     z-index:999;
+     position:fixed;
+     left:605px;
+     top:50px;
+     border: 2px solid #C0C0C0;
+     background-color: rgba(0,0,0,0.5);
+  }
+
+</style>
+	<head>
+		<title>个人中心</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/model.css"/>
+		<link rel="stylesheet" th:href="@{css/buttons.css}"/>
+		<link rel="stylesheet" th:href="@{css/login.css}"/>
+		<link rel="icon" type="images/x-icon" href="images/favicon.ico"/>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" th:href="@{/}">I❤SZ</a>
+				<div id="img1">
+				<a th:href="@{User}" id = "user" th:if="${session.s_name==null}"><img src="images/用户图标.png" width="20px" height="20px" title="用户"/></a>
+				<a th:href="@{User}" id = "user" th:if="${session.s_name!=null}"><img th:src="${session.s_txjpg}" width="20px" height="20px" title="用户"/></a>
+				</div>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+            <div class="login-box" id="login-box" style="display:none;" th:if="${session.s_name==null}">
+            <form th:action="@{/login}" th:object="${client}" method="post">
+            <table cellpadding="0" cellspacing="0">
+              <tr>
+                <td>用户名:</td>
+                <td><input class="button button-3d button-action button-pill" name = "s_name" type= "text" id="s_name" placeholder="用户名" style="height: 30px;"/></td>
+              </tr>
+              <tr>
+                <td>密码:</td>
+                <td><input class="button button-3d button-action button-pill" name = "s_password" type= "password" id="s_password" placeholder="密码" style="height: 30px;"/></td>
+              </tr>
+              <tr>
+				  <td><input class="button button-glow button-border button-rounded button-primary" type="button" value="登 录" onclick="mybutton()"></td>
+				  <td><input class="button button-glow button-border button-rounded button-primary" type="button" value="注 册" onclick="zhuce()"></td>
+			  </tr>
+            </table>
+            </form>
+    		</div>
+    		<!-- ********************************************************************** -->
+    		<div class="login-box" id="login-box" style="display:none;" th:if="${session.s_name!=null}">
+            <form th:action="@{/login}" th:object="${client}" method="post">
+            <table>
+              <tr>
+                <td>欢迎:<span th:text="${session.s_name}">用户名</span></td>
+              </tr>
+              <tr>
+              	<td><input class="button button-3d button-caution" type="button" value="个人中心" onclick="usercenter()"></td>
+              	<td><input class="button button-3d button-caution" type="button" value="退出登录" onclick="logout()"></td>
+			  </tr>
+            </table>
+            </form>
+    		</div>
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a th:href="@{demo}">Home</a></li>
+					<li><a th:href="@{elements}">Elements</a></li>
+					<li><a th:href="@{generic}">Generic</a></li>
+				</ul>
+			</nav>
+
+		<!-- Heading -->
+			<div id="heading" >
+				<h1>个人中心</h1>
+			</div>
+         
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<div class="content">
+						<header>
+							<h2 th:text="'欢迎,尊敬的:'+${session.s_name}+'用户'">Feugiat consequat</h2>
+						</header>
+						<table>
+						<tr><td><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#update" id="showModel2">头像修改</button></td></tr>
+						<tr><td><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#update" id="showModel">个人基本信息</button></td></tr>
+						<tr><td><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#update" id="showModel1">修改个人资料</button></td></tr>
+						</table>
+						<p></p>
+						<hr/>
+						<h3>Magna odio tempus commodo</h3>
+						<p></p>
+						<p></p>
+					</div>
+				</div>
+			</section>
+			<!-- ******************************************************* -->
+   					<div id="modal" class="modal">
+						<div class="modal-content">
+							<header class="modal-header">
+							<h4>个人基本信息</h4>
+							<span class="close">×</span>
+							</header>
+						<div class="modal-body">
+						<form id="xiugai" action="" th:each="user:${session.user}">
+							<img th:src="${user.s_txjpg}" width="80px" height="80px" title="用户"/><br/>
+							ID编号:<a th:text="${user.s_id}"></a><br/>
+							用户名:<a th:text="${user.s_name}"></a><br/>
+							手机号码:<a th:text="${user.s_pnum}"></a><br/>
+							电子邮箱:<a th:text="${user.s_pemail}"></a><br/>
+						</form>
+						</div>
+						<footer class="modal-footer">
+							<!--<button id="cancel">取消</button>-->
+							<button id="cancel" >确定</button>
+						</footer>
+						</div>
+ 					</div>
+            <!-- ******************************************************* -->
+            <div id="modal1" class="modal1">
+						<div class="modal-content1">
+							<header class="modal-header1">
+							<h4>资料修改</h4>
+							<span class="close1">×</span>
+							</header>
+						<div class="modal-body1">
+						<form id="f1" th:action="@{/userUpdate}" th:each="user:${session.user}" enctype="multipart/form-data" method="post">
+						    <!-- 用户ID -->
+						    <input type="hidden" id ="s_id" name= "s_id" th:value="${user.s_id}" /><br/>
+						       头像:<img th:src="${user.s_txjpg}" width="40px" height="40px" title="用户"/><br/>
+							用户名:<input type = "text" id="s_pname" name  = "s_name" th:value = "${user.s_name}" /><br/>
+							手机号码:<input type = "text" id="s_pnum" name  = "s_pnum" th:value = "${user.s_pnum}" /><br/>
+							电子邮箱:<input  type = "text" id="s_pemail" name  = "s_pemail" th:value = "${user.s_pemail}" /><br/>
+							<!-- <input type="submit" name="submit" value="确定修改"/> -->
+						</form>
+						</div>
+						<footer class="modal-footer1">
+							<button id="cancel1">取消</button>
+							<button id="sure1" onclick="tijiao()">确定修改</button>
+						</footer>
+						</div>
+ 					</div>
+            <!-- ******************************************************* -->
+            <div id="modal2" class="modal2">
+						<div class="modal-content2">
+							<header class="modal-header2">
+							<h4>头像修改</h4>
+							<span class="close2">×</span>
+							</header>
+						<div class="modal-body2">
+						<form class="form-horizontal" id="txjpg" th:action="@{/headpg}" enctype="multipart/form-data" method="post" th:each="user:${session.user}">
+    					<div class="form-group">
+     					<div class="input-group col-md-4">
+      						<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      						<span>当前头像:</span><br/>
+							<img th:src="${user.s_txjpg}" width="80px" height="80px" title="用户"/><br/>
+							<input class="form-control" placeholder="本地上传" type="file" name="file"/>
+     					</div>
+    					</div>
+   						</form>
+						</div>
+						<footer class="modal-footer2">
+							<button id="cancel2">取消</button>
+							<button id="sure2" onclick="tijiao1()">确定</button>
+						</footer>
+						</div>
+ 					</div>
+            <!-- ******************************************************* -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="content">
+						<section>
+							<h3>Accumsan montes viverra</h3>
+							<p></p>
+						</section>
+						<section>
+							<h4>Sem turpis amet semper</h4>
+							<ul class="alt">
+								<li><a href="#">Dolor pulvinar sed etiam.</a></li>
+								<li><a href="#">Etiam vel lorem sed amet.</a></li>
+								<li><a href="#">Felis enim feugiat viverra.</a></li>
+								<li><a href="#">Dolor pulvinar magna etiam.</a></li>
+							</ul>
+						</section>
+						<section>
+							<h4>Magna sed ipsum</h4>
+							<ul class="plain">
+								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+							</ul>
+						</section>
+					</div>
+				</div>
+			</footer>
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/browser.min.js"></script>
+			<script src="js/breakpoints.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+            <script src="js/Home.js"></script>
+            <script src="js/model.js"></script>
+	</body>
+	<script type="text/javascript">
+
+	//修改用户资料
+	 function tijiao(){
+		  document.getElementById("f1").submit();
+	 }
+	 //修改
+	 function tijiao1(){
+		  document.getElementById("txjpg").submit();
+	 }
+	 function tijiao2() {
+
+	 }
+    </script>
+</html>

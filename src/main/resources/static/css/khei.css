@@ -1,0 +1,107 @@
+ #img1{
+       margin-top:100px;
+       }
+  #login-box{
+     color:black;
+     width: 100%;
+     height: 200px;
+     z-index:999;
+     position:fixed;
+     left:605px;
+     top:50px;
+     border: 2px solid #C0C0C0;
+     background-color: white;
+     background-image: url("images/timg1.jpg");
+  }
+  #i1{
+     text-decoration:none;
+     width: 100%;
+     height: 100%;
+  }
+  #dft{
+     position:fixed;
+     margin-left: 90%;
+  }
+   #ys1{
+     color: blue;
+     font-weight: bold;
+  }
+  #ys{
+     color: red;
+     font-weight: bold;
+  }
+  #s_head{
+     margin-top: 160px;
+  }
+  table td:nth-child(odd){
+    background: white;
+  }
+  table td:nth-child(even){
+    background: white;
+  }
+  #table1{
+    width: 200px;
+  }
+  #date{
+    color:#4F4F4F; 
+    text-decoration:none;
+  }
+  .inner{
+	width: 80%;
+}
+.content{
+   width: 70%;
+   margin-left: 15%;
+}
+#gg1{
+   border: 2px solid #C0C0C0;
+   float:left;
+   width: 15%;
+   height: 870px;
+   background-color: #C0C0C0;
+}
+#gg2{
+   border: 2px solid #C0C0C0;
+   float:right;
+   width: 15%;
+   height: 870px;
+   background-color: #C0C0C0;
+}
+#bus1{
+	border:0;
+	outline:none;
+}
+#bufq{
+	margin-top:10px;
+	background-color:white;
+}
+#bufq1{
+	margin-top:10px;
+	background-color:#c0c0c0;
+	cursor:default;
+}
+#azz{
+	float: right;
+}
+#h5tz{
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#s_name{
+	margin-left: -30px;
+}
+#s_password{
+	margin-left: -30px;
+}
+#divsq{
+	width: 100%;
+    height: 190px;
+}
+#h2sq{
+	color: white;
+}
+#bgg{
+	color: white;
+}

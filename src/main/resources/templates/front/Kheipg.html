@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="${session.tzbt}">帖子页面头标题</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" th:href="@{/css/main.css}"/>
+		<link rel="stylesheet" th:href="@{css/model.css}"/>
+		<link rel="stylesheet" th:href="@{css/khpg.css}"/>
+		<link rel="stylesheet" th:href="@{css/buttons.css}"/>
+		<link rel="stylesheet" th:href="@{css/login.css}"/>
+		<link rel="icon" type="images/x-icon" href="images/favicon.ico"/>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" th:href="@{/}" title="刷新">I❤SZ</a>
+				<div id="img1">
+				<a th:href="@{User}" id = "user" th:if="${session.s_name==null}"><img src="images/用户图标.png" width="20px" height="20px" title="用户"/></a>
+				<a th:href="@{User}" id = "user" th:if="${session.s_name!=null}"><img th:src="${session.s_txjpg}" width="20px" height="20px" title="用户"/></a>
+				</div>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+         <div class="login-box" id="login-box" style="display:none;" th:if="${session.s_name==null}">
+            <form th:action="@{/login}" th:object="${client}" method="post">
+            <table>
+              <tr>
+                <td>用户名:</td>
+                <td><input class="button button-3d button-action button-pill" name = "s_name" type= "text" id="s_name" placeholder="用户名" style="height: 30px;"/></td>
+              </tr>
+              <tr>
+                <td>密码:</td>
+                <td><input class="button button-3d button-action button-pill" name = "s_password" type= "password" id="s_password" placeholder="密码" style="height: 30px;"/></td>
+              </tr>
+              <tr>
+              	<td><input class="button button-glow button-border button-rounded button-primary" type="button" value="登 录" onclick="mybutton()"></td>
+              	<td><input class="button button-glow button-border button-rounded button-primary" type="button" value="注 册" onclick="zhuce()"></td>
+			  </tr>
+            </table>
+            </form>
+    		</div>
+    		<!-- ********************************************************************** -->
+    		<div class="login-box" id="login-box" style="display:none;" th:if="${session.s_name!=null}">
+            <form th:action="@{/login}" th:object="${client}" method="post">
+            <table>
+              <tr>
+                <td>欢迎:<span th:text="${session.s_name}">用户名</span></td>
+              </tr>
+              <tr>
+              	<td><input class="button button-3d button-caution" type="button" value="个人中心" onclick="usercenter()"></td>
+              	<td><input class="button button-3d button-caution" type="button" value="退出登录" onclick="logout()"></td>
+			  </tr>
+            </table>
+            </form>
+    		</div>
+    		
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a th:href="@{demo}">Home</a></li>
+					<li><a th:href="@{elements}">Elements</a></li>
+					<li><a th:href="@{generic}">Generic</a></li>
+				</ul>
+			</nav>
+
+		<!-- Heading -->
+			<div id="heading" >
+				<h1>抗压论坛</h1>
+			</div>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+			    <div id="dft">
+			    <button th:if="${session.s_name==null}" id="hf" onclick="hf1()">回复</button>
+				<button th:if="${session.s_name!=null}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#update" id="showModel">回复</button><br/>
+				<button onclick="F5()">刷新</button>
+				</div>
+				<!-- ***************************************** -->
+				<div id="modal" class="modal">
+						<div class="modal-content">
+							<header class="modal-header">
+							<h4>回帖</h4>
+							<span class="close">×</span>
+							</header>
+						<div class="modal-body">
+						<form th:action="@{Huif}"  id="f1">
+							<textarea rows="4" cols="40" id="s_htext" name="s_htext" placeholder="内容"></textarea>
+						</form>
+						</div>
+						<footer class="modal-footer">
+							<button id="cancel">取消</button>
+							<button id="sure" onclick="tijiao()">确定</button>
+						</footer>
+						</div>
+ 					</div>
+				<!-- ***************************************** -->
+				<div class="inner">
+					<div class="content">
+						<header>
+							<h2>Feugiat consequat</h2>
+						</header>
+						<table>
+						<tr>
+						<th><h3 th:text="'标题：'+${session.tzbt}" align="center" id = "h1">*帖子标题*</h3></th>
+						</tr>
+						<tr>
+						<td th:if="${session.cpg==1}">
+						<div id="main">
+						<!-- 楼主 -->
+						<div class="d1" id="div1" style="float:left;">
+						<img th:src="${session.tztx}" width="140px" height="140px">
+						<div align="center"><a class="ha" th:text="'作者:'+${session.tzzz}"></a></div>
+						</div>
+						<!-- 楼主 -->
+						<div class="d1" id="div2" style="float:right;">
+						<a class="ha" th:text="''+${session.tznr}">*帖子内容*</a>
+						<div id="dl" align="right">
+						<div id="dl1" align="left"><a class= "ha" id="at1">楼主</a></div>
+						<a class= "ha1" th:text="${session.s_date}+' '+' '"></a><!-- 回复时间 -->
+						<a id="hf1" style="cursor:pointer" th:if="${session.s_name==session.tzzz||session.s_isadmin==1}" th:onclick="deltz()">删除</a>
+						</div>
+						</div>
+						<!--  -->
+						</div>
+						</td>
+						</tr>
+						<tr th:each="var:${session.HuiFu}">
+						<td>
+						<div id="main">
+						<!-- 作者信息 -->
+						<div class="d1" id="div1" style="float:left;">
+						<img th:src="${var.s_txjpg}" width="140px" height="140px">
+						<div align="center"><a id="uid" href=" " class= "ha" th:text="${var.s_name}"></a></div>
+						<div align="center"><a class= "ha1" >等级:小白</a></div>
+						</div>
+						<!-- 帖子内容 -->
+						<div class="d1" id="div2" style="float:right;">
+						<div id="tz"><a class= "ha" th:text="${var.s_htext}">*帖子内容*</a></div><br/><!-- 回复内容 -->
+						<div id="dl" align="right">
+						<a id="hf1" class= "ha" href="">回复&nbsp&nbsp</a><!-- 楼中楼回复 -->
+						<a class= "ha" th:text="${var.s_date}+' '+' '"></a><!-- 回复时间 -->
+						<a id="hf1" style="cursor:pointer" th:if="${session.s_name==var.s_name}" th:onclick="'del(\''+${var.s_hid}+'\')'">删除</a>
+						</div>
+						<div id="dl1"><a class= "ha" id="at1" th:text="${var.s_hid+1}+'L'"></a></div>
+						</div>
+						<!--  -->
+						</div>
+						</td>
+						</tr>
+						</table>
+						<div align="right">
+						<a id="i1" th:text="'当前:'+${session.cpg}+'/'+${session.zpg}+' '">当前1/1</a>
+						<a th:href="@{/opg}" id="i1" >首页</a>
+						<a th:href="@{/last1}" id="i1">上一页</a>
+						<a th:href="@{/next1}" id="i1">下一页</a>
+						<a th:href="@{/epg}" id="i1">尾页</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="content">
+						<section>
+							<h3>Accumsan montes viverra</h3>
+							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+						</section>
+						<section>
+							<h4>Sem turpis amet semper</h4>
+							<ul class="alt">
+								<li><a href="#">Dolor pulvinar sed etiam.</a></li>
+								<li><a href="#">Etiam vel lorem sed amet.</a></li>
+								<li><a href="#">Felis enim feugiat viverra.</a></li>
+								<li><a href="#">Dolor pulvinar magna etiam.</a></li>
+							</ul>
+						</section>
+						<section>
+							<h4>Magna sed ipsum</h4>
+							<ul class="plain">
+								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+							</ul>
+						</section>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script th:src="@{/js/jquery.min.js}"></script>
+			<script th:src="@{js/browser.min.js}"></script>
+			<script th:src="@{js/breakpoints.min.js}"></script>
+			<script th:src="@{js/util.js}"></script>
+			<script th:src="@{js/main.js}"></script>
+			<script th:src="@{js/Home.js}"></script>
+			<script th:src="@{js/model.js}"></script>
+	</body>
+	<script type="text/javascript">
+	//删除楼中楼
+	  function del(s_hid){
+		  var c = confirm("确认删除此回复？");
+		  if(!c){
+			  return;
+		  }
+		  window.location.href="/DeHf?s_hid="+s_hid;
+	  }
+	//删除主贴
+	function deltz(){
+		  var c = confirm("确认删除此帖子？");
+		  if(!c){
+			  return;
+		  }
+		  window.location.href="/Deltz";
+	  }
+	//刷新
+	  function F5(){
+		window.opener.document.location.reload();
+	  }
+	  function HF(){
+		  window.location.href="/ft";
+	  }
+	  function hf1(){
+		  alert("请先登录!");
+	  }
+	  function tijiao(){
+		  document.getElementById("f1").submit();
+	  }
+	</script>
+</html>

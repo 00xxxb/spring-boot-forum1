@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.lfd.mapper.TieziMapper">
+  <resultMap type="S_Khei" id="S_KheiMap">
+  <id property="s_tid" column="s_tid"/>
+  <result property="s_id" column="s_id"/>
+  <result property="s_head" column="s_head"/>
+  <result property="s_text" column="s_text"/>
+  <result property="s_date" column="s_date"/>
+  </resultMap>
+  
+  <!-- 帖子所有信息 -->
+   <resultMap type="TzInformation" id="TzInformationMap">
+  <id property="s_id" column="s_id"/>
+  <result property="s_name" column="s_name"/>
+  <result property="s_password" column="s_password"/>
+  <result property="s_pnum" column="s_pnum"/>
+  <result property="s_pemail" column="s_pemail"/>
+  <result property="s_tid" column="s_tid"/>
+  <result property="s_head" column="s_head"/>
+  <result property="s_text" column="s_text"/>
+  <result property="s_date" column="s_date"/>
+  <result property="s_jp" column="s_jp"/>
+  <result property="s_djl" column="s_djl"/>
+  <result property="edate" column="edate"/>
+  </resultMap> 
+  
+  <!-- 回复评论的所有信息 -->
+  <resultMap type="S_Huif" id="S_HuifMap">
+  <id property="s_id" column="s_id"/>
+  <result property="s_name" column="s_name"/>
+  <result property="s_password" column="s_password"/>
+  </resultMap>
+
+  <!-- 查询所有帖子信息 -->
+  <select id="LookTz" resultMap="S_KheiMap">
+  SELECT * FROM Sz_Tiezi
+  </select>
+  <!-- 根据所有帖子数量 -->
+  <select id="ConutTz" parameterType="int" resultType="java.lang.Integer">
+  select count(*) from Sz_Tiezi 
+  </select>
+  <!-- 根据ID查询当下所有帖子信息 -->
+  <select id="LookTzid" resultMap="S_KheiMap">
+  select * from Sz_Tiezi where s_tid = #{s_tid} 
+  </select>
+  <!-- 查询帖子全部信息 -->
+  <select id="Tzif" resultMap="TzInformationMap">
+   <!-- select count(tid) sl,b.* from
+  (select s_htext,a.s_tid tid,s_name from HuiFu a,Sz_Tiezi b,Sz_User c where a.s_tid = b.s_tid and a.s_id = c.s_id) a 
+  right join
+  (select distinct a.*,b.s_tid,b.s_head,b.s_text,b.s_date,b.s_jp,b.s_djl from Sz_User a,Sz_Tiezi b where a.s_id = b.s_id) b
+  on a.tid=b.s_tid group by s_tid -->
+  select a.*,a.edate from 
+  (
+  select count(tid) sl,b.*,a.edate from
+  (
+  select a.s_htext,a.tid,a.s_name,a.s_id,max(edate) edate from 
+  ( 
+  select s_htext,a.s_tid tid,s_name,a.s_id,a.s_date edate 
+  from HuiFu a,Sz_Tiezi b,Sz_User c 
+  where a.s_tid = b.s_tid 
+  and a.s_id = c.s_id 
+  order by s_id desc
+  ) 
+  a group by tid
+  ) a 
+  right join
+  (
+  select distinct a.*,b.s_tid,b.s_head,b.s_text,b.s_date,b.s_jp,b.s_djl 
+  from Sz_User a,Sz_Tiezi b 
+  where a.s_id = b.s_id
+  ) b
+  on a.tid=b.s_tid 
+  group by s_tid
+  ) a order by edate desc
+  </select>
+  <!-- 查询全部精品贴 -->
+  <select id="tzjp" resultMap="TzInformationMap">
+  select count(*) sl,b.* from
+  (select s_htext,a.s_tid tid,s_name from HuiFu a,Sz_Tiezi b,Sz_User c where a.s_tid = b.s_tid and a.s_id = c.s_id) a 
+  right outer join
+  (select distinct a.*,b.s_tid,b.s_head,b.s_text,b.s_date,b.s_jp,b.s_djl from Sz_User a,Sz_Tiezi b where a.s_id = b.s_id and b.s_jp = 1) b
+  on a.tid=b.s_tid group by s_tid
+  </select>
+  <!-- 查询热门帖子-回复 -->
+  <select id="Tzdesc" resultMap="TzInformationMap">
+  select count(tid) sl,b.* from 
+  (select s_htext,a.s_tid tid,s_name from HuiFu a,Sz_Tiezi b,Sz_User c where a.s_tid = b.s_tid and a.s_id = c.s_id) a 
+  right join
+  (select distinct a.*,b.s_tid,b.s_head,b.s_text,b.s_date,b.s_jp,b.s_djl from Sz_User a,Sz_Tiezi b where a.s_id = b.s_id) b
+  on a.tid=b.s_tid group by s_tid order by sl desc
+  </select>
+  <!-- 查询热门帖子-点击 -->
+  <select id="TzDjl" resultMap="TzInformationMap">
+  select count(tid) sl,b.* from 
+  (select s_htext,a.s_tid tid,s_name from HuiFu a,Sz_Tiezi b,Sz_User c where a.s_tid = b.s_tid and a.s_id = c.s_id) a 
+  right join
+  (select distinct a.*,b.s_tid,b.s_head,b.s_text,b.s_date,b.s_jp,b.s_djl from Sz_User a,Sz_Tiezi b where a.s_id = b.s_id) b
+  on a.tid=b.s_tid group by s_tid order by s_djl desc;
+  </select>
+  <!-- 用户发表新帖子 -->
+  <insert id="UserTz">
+  insert into Sz_Tiezi values (s_tid,#{s_head},#{s_text},#{s_id},#{s_date},0,0);
+  </insert>
+  <!-- 查询当前帖子所有回复 -->
+  <select id="LookHf" resultMap="S_HuifMap">
+  select * from
+  (select s_htext,a.s_tid,s_name,a.s_date,s_hid,s_txjpg from HuiFu a,Sz_Tiezi b,Sz_User c where a.s_tid = b.s_tid and a.s_id = c.s_id) a 
+  where a.s_tid=#{s_tid}
+  </select>
+  <!-- 回帖 -->
+  <insert id="HuiT">
+  insert into HuiFu values (s_hid,#{s_htext},#{s_id},#{s_tid},#{s_date});
+  </insert>
+  <!-- 查询当前帖子共有多少回复量 -->
+  <select id="CountHf" parameterType="int" resultType="java.lang.Integer">
+  select count(*) from
+  (select s_htext,a.s_tid,s_name from HuiFu a,Sz_Tiezi b,Sz_User c where a.s_tid = b.s_tid and a.s_id = c.s_id) a 
+  where a.s_tid=#{s_tid}
+  </select>
+  <!-- 用户删除帖子 -->
+  <delete id="DeTz">
+  delete from Sz_Tiezi where s_tid = #{s_tid};
+  </delete>
+  <!-- 用户删除帖子回复一并删除 -->
+  <delete id="Detzh">
+  delete from HuiFu where s_tid = #{s_tid};
+  </delete>
+  <!-- 用户删除帖子回复 -->
+  <delete id="DeHf">
+  delete from HuiFu where s_hid = #{s_hid};
+  </delete>
+  <!-- 统计访问量 -->
+  <update id="TzDj">
+  update Sz_Tiezi set s_djl = #{s_djl} where s_tid = #{s_tid}
+  </update>
+</mapper>

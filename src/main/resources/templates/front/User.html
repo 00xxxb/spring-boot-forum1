@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+  #img1{
+     margin:margin-top: 100px;
+       }
+   .zhuce{
+      margin-left:340px;
+      width: 40%;
+   }
+</style>
+	<head>
+		<title>登陆注册</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" th:href="@{css/buttons.css}"/>
+		<link rel="stylesheet" th:href="@{css/login.css}"/>
+		<link rel="stylesheet" th:href="@{css/user.css}"/>
+		<link rel="icon" type="images/x-icon" href="images/favicon.ico"/>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" th:href="@{/}">I❤SZ</a>
+				<div id="img1">
+				<a th:href="@{User}" id = "user" th:if="${session.s_name==null}"><img src="images/用户图标.png" width="20px" height="20px" title="用户"/></a>
+				<a th:href="@{User}" id = "user" th:if="${session.s_name!=null}"><img th:src="${session.s_txjpg}" width="20px" height="20px" title="用户"/></a>
+				</div>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+            <div class="login-box" id="login-box" style="display:none;" th:if="${session.s_name==null}">
+            <form th:action="@{/login}" th:object="${client}" method="post">
+            <table>
+              <tr>
+                <td>用户名:</td>
+                <td><input class="button button-3d button-action button-pill" name = "s_name" type= "text" id="s_name" placeholder="用户名" style="height: 30px;"/></td>
+              </tr>
+              <tr>
+                <td>密码:</td>
+                <td><input class="button button-3d button-action button-pill" name = "s_password" type= "password" id="s_password" placeholder="密码" style="height: 30px;"/></td>
+              </tr>
+              <tr>
+              	<td><input class="button button-glow button-border button-rounded button-primary" type="button" value="登 录" onclick="mybutton()"></td>
+              	<td><input class="button button-glow button-border button-rounded button-primary" type="button" value="注 册" onclick="zhuce()"></td>
+			  </tr>
+            </table>
+            </form>
+    		</div>
+    		<!-- ********************************************************************** -->
+    		<div class="login-box" id="login-box" style="display:none;" th:if="${session.s_name!=null}">
+            <form th:action="@{/login}" th:object="${client}" method="post">
+            <table>
+              <tr>
+                <td>欢迎:<span th:text="${session.s_name}">用户名</span></td>
+              </tr>
+              <tr>
+              	<td><input class="button button-3d button-caution" type="button" value="个人中心" onclick="usercenter()"></td>
+              	<td><input class="button button-3d button-caution" type="button" value="退出登录" onclick="logout()"></td>
+			  </tr>
+            </table>
+            </form>
+    		</div>
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a th:href="@{demo}">Home</a></li>
+					<li><a th:href="@{elements}">Elements</a></li>
+					<li><a th:href="@{generic}">Generic</a></li>
+				</ul>
+			</nav>
+
+		<!-- Heading -->
+			<div id="heading" >
+				<h1>注册</h1>
+			</div>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+<div class="form-div">
+<div class="zhuce" align="center">
+    <form id="reg-form" th:action="@{/zhuce}" th:method="get">
+                <span id="yhm">用户名</span><input placeholder="用户" name="s_name" type="text" id="name" th:onchange="sName()" style="width:300px;height:40px;"/><br/>
+                <span>密码</span><input placeholder="密码" name="s_password" type="password" id="password" th:onchange="sPwd()" style="width:300px;height:40px;"/><br/>
+                <span id="apwd">再输入一次密码</span><input placeholder="再输入一次密码" name="pwd2" type="password" id="pwd2" th:onchange="sPwd()" style="width:300px;height:40px;"/><br/>
+                <span id="email">邮箱</span><input placeholder="邮箱" name="s_pemail" type="text" id="s_pemail" th:onchange="sEmail()" style="width:300px;height:40px;"/><br/>
+                <span id="phone">手机号码</span><input placeholder="手机号码" name="s_pnum" type="text" id="s_pnum" style="width:300px;height:40px;"/>
+		<div id="zcbt">
+			<input class="button button-3d button-primary button-rounded" value="注 册" type="button" onclick="zc()" style="margin-right:20px; margin-top:20px;">
+			<input class="button button-3d button-primary button-rounded" value="我有账号，我要登录" type="button" onclick="login()" style="margin-right:45px; margin-top:20px;">
+        </div>
+        <br class="clear">
+    </form>
+    </div>
+</div>
+
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="content">
+						<section>
+							<h3>Accumsan montes viverra</h3>
+							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+						</section>
+						<section>
+							<h4>Sem turpis amet semper</h4>
+							<ul class="alt">
+								<li><a href="#">Dolor pulvinar sed etiam.</a></li>
+								<li><a href="#">Etiam vel lorem sed amet.</a></li>
+								<li><a href="#">Felis enim feugiat viverra.</a></li>
+								<li><a href="#">Dolor pulvinar magna etiam.</a></li>
+							</ul>
+						</section>
+						<section>
+							<h4>Magna sed ipsum</h4>
+							<ul class="plain">
+								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+							</ul>
+						</section>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/browser.min.js"></script>
+			<script src="js/breakpoints.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+            <script src="js/jquery-2.1.0.min.js"></script>
+            <script src="js/easyform.js"></script>
+            <script src="js/Home.js"></script>
+            <script src="js/User.js"></script>
+	</body>
+	<script type="text/javascript">
+</script>
+</html>

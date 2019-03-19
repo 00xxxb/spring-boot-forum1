@@ -1,0 +1,16 @@
+#s_name{
+	margin-left: -30px;
+}
+#s_password{
+	margin-left: -30px;
+}
+#login-box{
+    color:black;
+    width: 15%px;
+    height: 200px;
+    z-index:999;
+    position:fixed;
+    top:50px;
+    border: 2px solid #C0C0C0;
+    background-color: white;
+  }

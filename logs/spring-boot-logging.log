@@ -1,0 +1,36 @@
+2018-12-20 14:57:06.753  INFO 9952 --- [restartedMain] com.lfd.SzkyApplication                  : Starting SzkyApplication on DESKTOP-GFBTAIQ with PID 9952 (E:\javaweb2\SZKY\target\classes started by 李豫 in E:\javaweb2\SZKY)
+2018-12-20 14:57:06.754  INFO 9952 --- [restartedMain] com.lfd.SzkyApplication                  : No active profile set, falling back to default profiles: default
+2018-12-20 14:57:07.041  INFO 9952 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-20 14:57:07.041  INFO 9952 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2018-12-20 14:57:07.066  INFO 9952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-20 14:57:07.078  WARN 9952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Cannot deserialize session attribute [user] for session [53A5EE045ED141A189C2B1622D191F5C]
+2018-12-20 14:57:07.303  INFO 9952 --- [restartedMain] com.lfd.SzkyApplication                  : Started SzkyApplication in 0.636 seconds (JVM running for 110.579)
+2018-12-20 14:57:14.085  INFO 9952 --- [http-nio-8086-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-20 14:57:14.105  INFO 9952 --- [http-nio-8086-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2018-12-20 14:57:14.112  INFO 9952 --- [http-nio-8086-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2018-12-20 14:58:13.951  INFO 9952 --- [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2018-12-20 14:58:13.954  INFO 9952 --- [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2018-12-20 14:58:14.331  INFO 9952 --- [restartedMain] com.lfd.SzkyApplication                  : Starting SzkyApplication on DESKTOP-GFBTAIQ with PID 9952 (E:\javaweb2\SZKY\target\classes started by 李豫 in E:\javaweb2\SZKY)
+2018-12-20 14:58:14.331  INFO 9952 --- [restartedMain] com.lfd.SzkyApplication                  : No active profile set, falling back to default profiles: default
+2018-12-20 14:58:14.609  INFO 9952 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-20 14:58:14.609  INFO 9952 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2018-12-20 14:58:14.637  INFO 9952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-20 14:58:14.648  WARN 9952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Cannot deserialize session attribute [user] for session [53A5EE045ED141A189C2B1622D191F5C]
+2018-12-20 14:58:14.825  INFO 9952 --- [restartedMain] com.lfd.SzkyApplication                  : Started SzkyApplication in 0.519 seconds (JVM running for 178.099)
+2018-12-20 14:58:25.311  INFO 9952 --- [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-20 14:58:31.392  INFO 9952 --- [http-nio-8086-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2018-12-20 14:58:31.399  INFO 9952 --- [http-nio-8086-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2018-12-20 15:05:05.257  INFO 9952 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2018-12-20 15:05:05.274  INFO 9952 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2018-12-20 15:05:05.811  INFO 9952 --- [restartedMain] com.lfd.SzkyApplication                  : Starting SzkyApplication on DESKTOP-GFBTAIQ with PID 9952 (E:\javaweb2\SZKY\target\classes started by 李豫 in E:\javaweb2\SZKY)
+2018-12-20 15:05:05.812  INFO 9952 --- [restartedMain] com.lfd.SzkyApplication                  : No active profile set, falling back to default profiles: default
+2018-12-20 15:05:06.164  INFO 9952 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-20 15:05:06.164  INFO 9952 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2018-12-20 15:05:06.200  INFO 9952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-20 15:05:06.211  WARN 9952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Cannot deserialize session attribute [user] for session [53A5EE045ED141A189C2B1622D191F5C]
+2018-12-20 15:05:06.415  INFO 9952 --- [restartedMain] com.lfd.SzkyApplication                  : Started SzkyApplication in 0.637 seconds (JVM running for 589.69)
+2018-12-20 15:05:16.124  INFO 9952 --- [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-20 15:05:16.142  INFO 9952 --- [http-nio-8086-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2018-12-20 15:05:16.156  INFO 9952 --- [http-nio-8086-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2018-12-20 15:07:05.166  INFO 9952 --- [Thread-22] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2018-12-20 15:07:05.170  INFO 9952 --- [Thread-22] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.

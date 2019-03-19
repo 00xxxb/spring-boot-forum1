@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+</style>
+	<head>
+		<title>抗压论坛</title>
+		<meta charset="utf-8" />
+		<meta content="user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/model.css"/>
+		<link rel="stylesheet" href="css/khei.css"/>
+		<link rel="stylesheet" href="css/buttons.css"/>
+		<link rel="icon" type="images/x-icon" href="images/favicon.ico"/>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" th:href="@{/kh}" title="刷新">I❤SZ</a>
+				<div id="img1">
+				<a th:href="@{User}" id = "user" th:if="${session.s_name==null}"><img src="images/用户图标.png" width="20px" height="20px" title="用户"/></a>
+				<a th:href="@{User}" id = "user" th:if="${session.s_name!=null}"><img th:src="${session.s_txjpg}" width="20px" height="20px" title="用户"/></a>
+				</div>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+         <div class="login-box" id="login-box" style="display:none;" th:if="${session.s_name==null}">
+            <form th:action="@{/login}" th:object="${client}" method="post">
+            <table>
+              <tr>
+                <td>用户名:</td>
+                <td><input class="button button-3d button-action button-pill" name = "s_name" type= "text" id="s_name" placeholder="用户名" style="height: 30px;"/></td>
+              </tr>
+              <tr>
+                <td>密码:</td>
+                <td><input class="button button-3d button-action button-pill" name = "s_password" type= "password" id="s_password" placeholder="密码" style="height: 30px;"/></td>
+              </tr>
+              <tr>
+              	<td><input class="button button-glow button-border button-rounded button-primary" type="button" value="登 录" onclick="mybutton()"></td>
+              	<td><input class="button button-glow button-border button-rounded button-primary" type="button" value="注 册" onclick="zhuce()"></td>
+			  </tr>
+            </table>
+            </form>
+    		</div>
+    		<!-- ********************************************************************** -->
+    		<div class="login-box" id="login-box" style="display:none;" th:if="${session.s_name!=null}">
+            <form th:action="@{/login}" th:object="${client}" method="post">
+            <table>
+              <tr>
+                <td>欢迎:<span th:text="${session.s_name}">用户名</span></td>
+              </tr>
+              <tr>
+              	<td><input class="button button-3d button-caution" type="button" value="个人中心" onclick="usercenter()"></td>
+              	<td><input class="button button-3d button-caution" type="button" value="退出登录" onclick="logout()"></td>
+			  </tr>
+            </table>
+            </form>
+    		</div>
+    		
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a th:href="@{demo}">Home</a></li>
+					<li><a th:href="@{elements}">Elements</a></li>
+					<li><a th:href="@{generic}">Generic</a></li>
+				</ul>
+			</nav>
+
+		<!-- Heading -->
+			<div id="heading" >
+				<h1>抗压论坛</h1>
+			</div>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+			    <div id="dft">
+			    <button th:if="${session.s_name==null}" title="发帖" id="bus1" class="button button-3d button-box button-jumbo" onclick="ft1()">✐</button><br th:if="${session.s_name==null}"/>
+				<button th:if="${session.s_name!=null}" title="发帖" class="button button-3d button-box button-jumbo" data-toggle="modal" data-target="#update" id="showModel">✐</button><br th:if="${session.s_name!=null}"/><br/>
+				<button  class="button button-3d button-box button-jumbo" title="刷新" onclick="F5()">⟲</button>
+				</div>
+				<!-- ***************************************** -->
+				<div id="modal" class="modal">
+						<div class="modal-content">
+							<header class="modal-header">
+							<h4>发布帖子</h4>
+							<span class="close">×</span>
+							</header>
+						<div class="modal-body">
+						<form th:action="@{UserTz}" th:each="user:${session.user}" id="f1">
+							<input type="text" name = "s_head" id = "s_head" placeholder="标题"/><br/>
+							<textarea rows="4" cols="40" id="s_text" name="s_text" placeholder="内容"></textarea>
+						</form>
+						</div>
+						<footer class="modal-footer">
+							<button id="cancel">取消</button>
+							<button id="sure" onclick="tijiao()">确定</button>
+						</footer>
+						</div>
+ 					</div>
+				<!-- ***************************************** -->
+				<div class="inner">
+				<div id="gg1">广告招租</div>
+				<div id="gg2">广告招租</div>
+					<div class="content">
+						<div id="table2">
+						<header>
+						<div id="divsq" style="background-image:url('images/timg1.jpg');"> 
+						<!-- <div id="divsq"> -->
+							<h2 id="h2sq">当前:深圳社区</h2><button id="bgg" type="button" style="color: white;" onclick="qq()">更改</button>
+					    </div>
+						</header>
+						<table>
+						<tr>
+						<th>
+							<button th:if="${session.bsf!='qbf'}" id="bufq" class="button button-primary button-pill button-small" onclick="qb()">全部</button>
+							<button th:if="${session.bsf=='qbf'}" id="bufq1" class="button button-primary button-pill button-small" >全部</button>
+							<button th:if="${session.bsf!='jpf'}" id="bufq" class="button button-primary button-pill button-small" onclick="jp()">精品</button>
+							<button th:if="${session.bsf=='jpf'}" id="bufq1" class="button button-primary button-pill button-small">精品</button>
+							<button th:if="${session.s_isadmin==1}" id="buadmin" class="button-primary button-pill button-small" onclick="admin()">查看用户状态</button>
+						<!--  -->
+						</th>
+						</tr>
+						<tr th:each="var:${session.Khei}">
+						<td>
+						<a th:if="${var.s_jp!=1}" th:href="${var.s_tid}" target="view_window" th:text="${var.s_head}" id="ys1">*帖子标题*</a>
+						<a th:if="${var.s_jp==1}" th:href="${var.s_tid}" target="view_window" th:text="'精·'+${var.s_head}" id="ys">*帖子标题*</a>
+						<h5 id="h5tz" th:text="${var.s_text}"></h5>
+						<div id="azz">
+						<h5 th:if="${var.edate!=null}" th:text="'最后回复: '+${var.edate}"></h5>
+						<h5 th:if="${var.edate==null}">暂无回复</h5>
+						<h5 th:text="'☝'+'('+${var.s_djl}+' )'+' '+'✎'+'('+${var.sl}+')'+'  '+'作者:'+${var.s_name}"></h5>
+						</div>
+						<h5 id = "date" th:text="'发帖日期:'+${var.s_date}"></h5>
+						</td>
+						</tr>
+						</table>
+						<div align="right">
+						<a id="i1" th:text="'当前:'+${session.cpg}+'/'+${session.zpg}">当前1/1</a><a th:href="@{/last}"  id="i1">上一页</a><a th:href="@{/next}" id="i1">下一页</a>
+						</div>
+						</div>
+					</div>
+					<div class="content">
+				        <header>
+					    <h2>热门帖子:</h2>
+					    <h5>回复最多:</h5>
+					    <div>
+					    <table>
+					    <tr th:each="var:${session.tzrm}">
+						<td>
+						<a th:if="${var.s_jp!=1}" th:href="${var.s_tid}" target="view_window" th:text="${var.s_head}" id="ys1">*帖子标题*</a>
+						<a th:if="${var.s_jp==1}" th:href="${var.s_tid}" target="view_window" th:text="'精·'+${var.s_head}" id="ys">*帖子标题*</a>
+						<h5 id="h5tz" th:text="${var.s_text}"></h5>
+						<div id="azz">
+						<h5 th:text="'☝'+'('+${var.s_djl}+' )'+' '+'✎'+'('+${var.sl}+')'+'  '+'作者:'+${var.s_name}"></h5>
+						</div>
+						<h5></h5>
+						<a id = "date" th:text="${var.s_date}"></a>
+						</td>
+						</tr>
+					    </table>
+					    </div>
+					    <h5>点击最多:</h5>
+					    <div>
+					    <table>
+					    <tr th:each="var:${session.tzdjl}">
+						<td>
+						<a th:if="${var.s_jp!=1}" th:href="${var.s_tid}" target="view_window" th:text="${var.s_head}" id="ys1">*帖子标题*</a>
+						<a th:if="${var.s_jp==1}" th:href="${var.s_tid}" target="view_window" th:text="'精·'+${var.s_head}" id="ys">*帖子标题*</a>
+						<h5 id="h5tz" th:text="${var.s_text}"></h5>
+						<div id="azz">
+						<h5 th:text="'☝'+'('+${var.s_djl}+' )'+' '+'✎'+'('+${var.sl}+')'+'  '+'作者:'+${var.s_name}"></h5>
+						</div>
+						<h5></h5>
+						<a id = "date" th:text="${var.s_date}"></a>
+						</td>
+						</tr>
+					    </table>
+					    </div>
+			             </header>
+				    </div>
+				    </div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="content">
+						<section>
+							<h3>Accumsan montes viverra</h3>
+							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+						</section>
+						<section>
+							<h4>Sem turpis amet semper</h4>
+							<ul class="alt">
+								<li><a href="#">Dolor pulvinar sed etiam.</a></li>
+								<li><a href="#">Etiam vel lorem sed amet.</a></li>
+								<li><a href="#">Felis enim feugiat viverra.</a></li>
+								<li><a href="#">Dolor pulvinar magna etiam.</a></li>
+							</ul>
+						</section>
+						<section>
+							<h4>Magna sed ipsum</h4>
+							<ul class="plain">
+								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+							</ul>
+						</section>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+		<script src="js/jquery.min.js"></script>
+			<script src="js/browser.min.js"></script>
+			<script src="js/breakpoints.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+            <script src="js/Home.js"></script>
+            <script src="js/model.js"></script>
+	</body>
+	<script type="text/javascript">
+	  function F5(){
+		  window.location.href="/kh";
+	  }
+	  function FT(){
+		  window.location.href="/ft";
+	  }
+	  function ft1(){
+		  alert("请先登录!");
+	  }
+	  function tijiao(){
+		  document.getElementById("f1").submit();
+	  }
+	  function jp(){
+		  window.location.href="/khjp";
+	  }
+	  function qb(){
+		  window.location.href="/kh";
+	  }
+	  function admin() {
+		  window.location.href="/admin";
+	  }
+	  /* $(document).ready(function(){
+		  var z = 1;
+		  var i = 0;
+		  var div_m = document.getElementById("table2");
+	      var div_n = div_m.getElementsByClassName("px").length;//获取当前页帖子数量
+	      alert(div_n);
+	      for(z;z<=div_n;z++){
+	    	 i++; 
+	    	 document.getElementById("px").innerHTML=i;
+	      } 
+	  }) */
+
+	</script>
+</html>
