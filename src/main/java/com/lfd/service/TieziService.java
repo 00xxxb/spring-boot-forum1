@@ -5,12 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.lfd.bean.PageBean;
 import com.lfd.bean.S_Huif;
 import com.lfd.bean.S_Khei;
-import com.lfd.bean.S_User;
+
 import com.lfd.bean.TzInformation;
 import com.lfd.mapper.TieziMapper;
 
@@ -24,7 +23,10 @@ public class TieziService {
     	List<S_Khei> list = mapper.LookTz();
     	return list;
     }
-    //查询所有帖子数量
+
+
+
+	//查询所有帖子数量
     public Integer Countz() {
     	Integer result = mapper.ConutTz();
     	return result;
@@ -81,7 +83,8 @@ public class TieziService {
     	mapper.Detzh(s_tid);
     	return result;
     }
-    //用户删除帖子回复 
+
+	//用户删除帖子回复
     public Integer DeHf(Integer s_hid) {
     	int result = mapper.DeHf(s_hid);
     	return result;
@@ -121,4 +124,5 @@ public class TieziService {
 	        pageData.setItems(allItems);
 	        return pageData.getItems(); 
 	    }
+
 }

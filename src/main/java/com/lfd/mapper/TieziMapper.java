@@ -2,6 +2,7 @@ package com.lfd.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,11 +30,11 @@ public interface TieziMapper {
 	//查询所有精品帖子
 	public List<TzInformation> tzjp();
 	//用户发布帖子
-	public Integer UserTz(String s_head,String s_text,Integer s_id,String s_date);
+	public Integer UserTz(@Param("s_head") String s_head, @Param("s_text") String s_text,@Param("s_id") Integer s_id, @Param("s_date") String s_date);
 	//查询当前帖子所有回复内容
 	public List<S_Huif> LookHf(int s_tid);
 	//回复帖子
-	public Integer HuiT(String s_htext,Integer s_id,Integer s_tid,String s_date);
+	public Integer HuiT(@Param("s_htext") String s_htext,@Param("s_id") Integer s_id,@Param("s_tid") Integer s_tid,@Param("s_date") String s_date);
 	//用户删除自己的帖子
 	public Integer DeTz(Integer s_tid);
 	//楼主删除主帖时所有回复一并删除
@@ -45,5 +46,5 @@ public interface TieziMapper {
 	//热门排序-点击
     public List<TzInformation> TzDjl();
 	//更新帖子点击量
-	public Integer TzDj(Integer s_djl,Integer s_tid);
+	public Integer TzDj(@Param("s_djl") Integer s_djl,@Param("s_tid") Integer s_tid);
 }

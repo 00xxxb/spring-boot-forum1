@@ -15,6 +15,7 @@
   <select id="getPermission" resultMap="S_UserMap">
     select s_id,s_name,s_status from Sz_user
   </select>
+
   <!--禁言用户-->
   <update id="banned" parameterType="S_User">
     update Sz_User set s_status = 0 where s_id = #{s_id}

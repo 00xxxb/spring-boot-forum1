@@ -69,6 +69,12 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>  <!-- 开启热部署 -->
 		</dependency>
+
+		<!--Springboot aop-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

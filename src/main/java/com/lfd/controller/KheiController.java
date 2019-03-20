@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.lfd.annotation.MyAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -93,6 +94,7 @@ public class KheiController {
 			return "/front/Kheipg";
         }
 		//用户发表帖子
+	    @MyAnnotation
 		@RequestMapping(value="/UserTz")
 		public String UserTz(HttpSession session,String s_head,String s_text) { 
 			@SuppressWarnings("unchecked")
@@ -112,6 +114,7 @@ public class KheiController {
 			return "redirect:kh";
 		}
 		//用户回帖
+	    @MyAnnotation
 		@RequestMapping(value="/Huif")
 		public String Huif(HttpSession session,String s_htext) {
 			@SuppressWarnings("unchecked")

@@ -96,9 +96,9 @@
 						<td th:text="${user.s_id}" class="td1"></td>
 						<td th:text="${user.s_name}" class="td1"></td>
 						<td th:text="${user.s_status}" class="td2" id="status"></td>
-						<td><input type="button" value="禁言" class="btn btn-success" th:if="${user.s_status==1}" th:onclick="'banned('+${user.s_id}+')'">
+						<td><input type="button" value="禁言" id="zhuantai1" class="btn btn-success" th:if="${user.s_status==1}" th:onclick="'banned('+${user.s_id}+')'">
 
-						<input type="button" value="解除" class="btn btn-success" th:if="${user.s_status==0}" th:onclick="'release('+${user.s_id}+')'"></td>
+						<input type="button" value="解除" id="zhuantai2" class="btn btn-success" th:if="${user.s_status==0}" th:onclick="'release('+${user.s_id}+')'"></td>
 					</tr>
 				</table>
 
@@ -145,6 +145,7 @@
 
 	<!-- Scripts -->
 	<script src="js/admin.js"></script>
+	<!--<script type="text/javascript" th:src="@{/js/admin.js}"></script>-->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/browser.min.js"></script>
 	<script src="js/breakpoints.min.js"></script>

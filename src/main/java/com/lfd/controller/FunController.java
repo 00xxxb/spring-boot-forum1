@@ -37,8 +37,9 @@ public class FunController {
 		if(list!=null&&!list.isEmpty()) {
 		if(s_name.equals(list.get(0).getS_name())&&s_password.equals(list.get(0).getS_password())) {
 			session.setAttribute("s_name",s_name );
-			session.setAttribute("s_isadmin",list.get(0).getS_isadmin());
 			session.setAttribute("user", list);
+			session.setAttribute("s_isadmin",list.get(0).getS_isadmin());
+			session.setAttribute("s_status",list.get(0).getS_status());
 			session.setAttribute("s_txjpg",list.get(0).getS_txjpg());
 			return "true";
 		}
