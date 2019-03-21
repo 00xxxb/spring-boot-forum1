@@ -84,9 +84,13 @@
 		<!-- Main -->
 			<section id="main" class="wrapper">
 			    <div id="dft">
-			    <button th:if="${session.s_name==null}" title="发帖" id="bus1" class="button button-3d button-box button-jumbo" onclick="ft1()">✐</button><br th:if="${session.s_name==null}"/>
-				<button th:if="${session.s_name!=null}" title="发帖" class="button button-3d button-box button-jumbo" data-toggle="modal" data-target="#update" id="showModel">✐</button><br th:if="${session.s_name!=null}"/><br/>
-				<button  class="button button-3d button-box button-jumbo" title="刷新" onclick="F5()">⟲</button>
+					<!--没登录发帖-->
+					<button th:if="${session.s_name==null}" title="发帖" id="bus1" class="button button-3d button-box button-jumbo" onclick="ft1()">✐</button><br th:if="${session.s_name==null}"/>
+					<!--禁言发帖-->
+					<button th:if="${session.s_name != null && session.s_status == 0}" title="发帖" id="bus2" class="button button-3d button-box button-jumbo" onclick="ft2()">✐</button><br th:if="${session.s_name !=null && session.s_status == 0}"/>
+					<!---正常发帖-->
+					<button th:if="${session.s_name!=null && session.s_status == 1}" title="发帖" class="button button-3d button-box button-jumbo" data-toggle="modal" data-target="#update" id="showModel">✐</button><br th:if="${session.s_name!=null && session.s_status == 1}"/><br/>
+					<button  class="button button-3d button-box button-jumbo" title="刷新" onclick="F5()">⟲</button>
 				</div>
 				<!-- ***************************************** -->
 				<div id="modal" class="modal">
@@ -239,6 +243,9 @@
 	  }
 	  function ft1(){
 		  alert("请先登录!");
+	  }
+	  function ft2() {
+		  alert("您已被禁言，如误封，请联系我们的客服，666-12580");
 	  }
 	  function tijiao(){
 		  document.getElementById("f1").submit();

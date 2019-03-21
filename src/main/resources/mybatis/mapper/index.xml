@@ -11,9 +11,9 @@
   </resultMap>
 
 
-  <!-- 用于展示的管理员页面-->
+  <!-- 用于展示的管理员管理页面-->
   <select id="getPermission" resultMap="S_UserMap">
-    select s_id,s_name,s_status from Sz_user
+    select s_id,s_name,s_status from Sz_user  where s_isadmin = 0
   </select>
 
   <!--禁言用户-->
