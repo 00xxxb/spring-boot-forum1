@@ -1,4 +1,4 @@
-package com.lfd.annotation;
+package com.fxb.annotation;
 
 import java.lang.annotation.*;
 

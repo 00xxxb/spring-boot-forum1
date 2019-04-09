@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="com.lfd.mapper.IndexMapper">
+<mapper namespace="com.fxb.mapper.IndexMapper">
   <resultMap type="S_User" id="S_UserMap">
   <id property="s_id" column="s_id"/>
   <result property="s_name" column="s_name"/>

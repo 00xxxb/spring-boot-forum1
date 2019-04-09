@@ -1,4 +1,4 @@
-package com.lfd;
+package com.fxb;
 
 import java.util.Properties;
 
@@ -9,8 +9,10 @@ import org.springframework.context.annotation.Bean;
 
 import com.github.pagehelper.PageHelper;
 
+//指定排除默认的springboot异常处理，因为新定义的全局异常处理springboot的就不执行了
+//@SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
 @SpringBootApplication
-@MapperScan("com.lfd.mapper") 
+@MapperScan("com.fxb.mapper")
 public class ForumApplication {
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.lfd.bean;
+package com.fxb.bean;
 
 public class TzInformation {
 	private int s_id;//唯一ID

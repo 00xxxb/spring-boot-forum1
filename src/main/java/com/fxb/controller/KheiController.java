@@ -1,4 +1,4 @@
-package com.lfd.controller;
+package com.fxb.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,20 +6,18 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.lfd.annotation.MyAnnotation;
+import com.fxb.annotation.MyAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.github.pagehelper.PageHelper;
-import com.lfd.bean.PageBean;
-import com.lfd.bean.S_Huif;
-import com.lfd.bean.S_Khei;
-import com.lfd.bean.S_User;
-import com.lfd.bean.TzInformation;
-import com.lfd.service.IndexService;
-import com.lfd.service.TieziService;
+import com.fxb.bean.S_Huif;
+import com.fxb.bean.S_Khei;
+import com.fxb.bean.S_User;
+import com.fxb.bean.TzInformation;
+import com.fxb.service.IndexService;
+import com.fxb.service.TieziService;
 
 @Controller
 public class KheiController {

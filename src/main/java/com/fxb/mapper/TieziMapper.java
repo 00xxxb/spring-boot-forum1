@@ -1,15 +1,15 @@
-package com.lfd.mapper;
+package com.fxb.mapper;
 
 import java.util.List;
 
+import com.fxb.bean.S_HuiFuLzl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lfd.bean.S_Huif;
-import com.lfd.bean.S_Khei;
-import com.lfd.bean.S_User;
-import com.lfd.bean.TzInformation;
+import com.fxb.bean.S_Huif;
+import com.fxb.bean.S_Khei;
+import com.fxb.bean.TzInformation;
 
 @Repository
 @Transactional
@@ -47,4 +47,10 @@ public interface TieziMapper {
     public List<TzInformation> TzDjl();
 	//更新帖子点击量
 	public Integer TzDj(@Param("s_djl") Integer s_djl,@Param("s_tid") Integer s_tid);
+
+	//查询所有楼中楼回复
+	public List<S_HuiFuLzl> CxLzl(@Param("s_tid") Integer s_tid,@Param("s_hid") Integer s_hid);
+
+	//查询所有楼中楼回复的数量
+	public Integer LzlHuiF(@Param("s_ltext") String s_ltext,@Param("s_id") Integer s_id,@Param("s_tid") Integer s_tid,@Param("s_hid") Integer s_hid,@Param("s_date") String s_date);
 }

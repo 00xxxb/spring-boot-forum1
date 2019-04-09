@@ -1,4 +1,4 @@
-package com.lfd.mapper;
+package com.fxb.mapper;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lfd.bean.S_User;
+import com.fxb.bean.S_User;
 
 @Repository
 @Transactional

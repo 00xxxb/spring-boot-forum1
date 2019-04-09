@@ -1,4 +1,4 @@
-package com.lfd.bean;
+package com.fxb.bean;
 
 /**
  * 分页bean

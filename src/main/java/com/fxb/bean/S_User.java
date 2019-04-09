@@ -1,4 +1,4 @@
-package com.lfd.bean;
+package com.fxb.bean;
 
 public class S_User {
 	private int s_id;

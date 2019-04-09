@@ -113,7 +113,9 @@
  					</div>
 				<!-- ***************************************** -->
 				<div class="inner">
-				<div id="gg1">广告招租</div>
+				<div id="gg1">广告招租
+				    <div>过年不收礼，收礼只收脑白金~</div>
+				</div>
 				<div id="gg2">广告招租</div>
 					<div class="content">
 						<div id="table2">
@@ -130,7 +132,7 @@
 							<button th:if="${session.bsf=='qbf'}" id="bufq1" class="button button-primary button-pill button-small" >全部</button>
 							<button th:if="${session.bsf!='jpf'}" id="bufq" class="button button-primary button-pill button-small" onclick="jp()">精品</button>
 							<button th:if="${session.bsf=='jpf'}" id="bufq1" class="button button-primary button-pill button-small">精品</button>
-							<button th:if="${session.s_isadmin==1}" id="buadmin" class="button-primary button-pill button-small" onclick="admin()">查看用户状态</button>
+							<button th:if="${session.s_isadmin==1}" class="button-primary button-pill button-small" onclick="admin()">查看用户状态</button>
 						<!--  -->
 						</th>
 						</tr>

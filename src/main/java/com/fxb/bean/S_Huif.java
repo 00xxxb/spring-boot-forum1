@@ -1,4 +1,4 @@
-package com.lfd.bean;
+package com.fxb.bean;
 
 import java.io.Serializable;
 
@@ -10,8 +10,16 @@ public class S_Huif implements Serializable{
 	private String s_name;//回复用户昵称
 	private String s_date;//发帖日期
 	private String s_txjpg;//头像地址
-	
-	
+	private Integer s_hfl;//楼中楼回复量
+
+	public Integer getS_hfl() {
+		return s_hfl;
+	}
+
+	public void setS_hfl(Integer s_hfl) {
+		this.s_hfl = s_hfl;
+	}
+
 	public String getS_txjpg() {
 		return s_txjpg;
 	}

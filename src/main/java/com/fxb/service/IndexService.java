@@ -1,12 +1,12 @@
-package com.lfd.service;
+package com.fxb.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lfd.bean.S_User;
-import com.lfd.mapper.IndexMapper;  
+import com.fxb.bean.S_User;
+import com.fxb.mapper.IndexMapper;
 
 @Service
 public class IndexService {

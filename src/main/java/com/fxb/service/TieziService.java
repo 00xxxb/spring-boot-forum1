@@ -1,4 +1,4 @@
-package com.lfd.service;
+package com.fxb.service;
 
 import java.util.List;
 
@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
-import com.lfd.bean.PageBean;
-import com.lfd.bean.S_Huif;
-import com.lfd.bean.S_Khei;
+import com.fxb.bean.PageBean;
+import com.fxb.bean.S_Huif;
+import com.fxb.bean.S_Khei;
 
-import com.lfd.bean.TzInformation;
-import com.lfd.mapper.TieziMapper;
+import com.fxb.bean.TzInformation;
+import com.fxb.mapper.TieziMapper;
 
 @Service
 public class TieziService {
@@ -23,8 +23,6 @@ public class TieziService {
     	List<S_Khei> list = mapper.LookTz();
     	return list;
     }
-
-
 
 	//查询所有帖子数量
     public Integer Countz() {

@@ -1,4 +1,4 @@
-package com.lfd.controller;
+package com.fxb.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lfd.service.IndexService;
+import com.fxb.service.IndexService;
 
 @Controller
 public class IndexController {
@@ -42,6 +42,12 @@ public class IndexController {
 	@RequestMapping(value="/UserCenter")
 	public String UserCenter() {
 		return "/front/UserCenter";
+	}
+	//test
+	@RequestMapping(value="/index")
+	public String index(HttpSession session) {
+		session.setAttribute("users",service.getUser());
+		return "/front/index";
 	}
 }
  

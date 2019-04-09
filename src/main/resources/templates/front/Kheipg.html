@@ -68,7 +68,7 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a th:href="@{demo}">Home</a></li>
-					<li><a th:href="@{elements}">Elements</a></li>
+					<li><a th:href="@{kh}">论坛</a></li>
 					<li><a th:href="@{generic}">Generic</a></li>
 				</ul>
 			</nav>
@@ -143,18 +143,39 @@
 						<div align="center"><a id="uid" href=" " class= "ha" th:text="${var.s_name}"></a></div>
 						<div align="center"><a class= "ha1" >等级:小白</a></div>
 						</div>
-						<!-- 帖子内容 -->
-						<div class="d1" id="div2" style="float:right;">
-						<div id="tz"><a class= "ha" th:text="${var.s_htext}">*帖子内容*</a></div><br/><!-- 回复内容 -->
-						<div id="dl" align="right">
-						<a id="hf1" class= "ha" href="">回复&nbsp&nbsp</a><!-- 楼中楼回复 -->
-						<a class= "ha" th:text="${var.s_date}+' '+' '"></a><!-- 回复时间 -->
-						<a id="hf1" style="cursor:pointer" th:if="${session.s_name==var.s_name}" th:onclick="'del(\''+${var.s_hid}+'\')'">删除</a>
-						</div>
-						<div id="dl1"><a class= "ha" id="at1" th:text="${var.s_hid+1}+'L'"></a></div>
-						</div>
+						<!--&lt;!&ndash; 帖子内容 &ndash;&gt;-->
+						<!--<div class="d1" id="div2" style="float:right;">-->
+						<!--<div id="tz"><a class= "ha" th:text="${var.s_htext}">*帖子内容*</a></div><br/>&lt;!&ndash; 回复内容 &ndash;&gt;-->
+						<!--<div id="dl" align="right">-->
+						<!--<a id="hf1" class= "ha" href="">回复&nbsp&nbsp</a>&lt;!&ndash; 楼中楼回复 &ndash;&gt;-->
+						<!--<a class= "ha" th:text="${var.s_date}+' '+' '"></a>&lt;!&ndash; 回复时间 &ndash;&gt;-->
+						<!--<a id="hf1" style="cursor:pointer" th:if="${session.s_name==var.s_name}" th:onclick="'del(\''+${var.s_hid}+'\')'">删除</a>-->
+						<!--</div>-->
+						<!--<div id="dl1"><a class= "ha" id="at1" th:text="${var.s_hid+1}+'L'"></a></div>-->
+						<!--</div>-->
 						<!--  -->
+							<!-- 帖子内容 -->
+							<div class="d1" id="div2" style="float: right;">
+								<div id="tz">
+									<a class="ha" th:text="${var.s_htext}">*帖子内容*</ a>
+								</div>
+								<br />
+								<!-- 回复内容 -->
+								<div id="dl" align="right">
+									<!-- 回复时间 -->
+									<a id="hf1" style="cursor: pointer"
+									   th:if="${session.s_name==var.s_name}"
+									   th:onclick="'del(\''+${var.s_hid}+'\')'">删除</a> <a class="ha"
+																						   th:text="${var.s_date}+' '+' '"></a>
+									<!-- 楼中楼回复 -->
+									<a id="hf1" class="lhf" th:value="${var.s_hid}">回复</a><a id="hf1" class="lhf" th:text="'（'+${var.s_hfl}+'）'">111</a>
+								</div>
+								<div id="dl1">
+									<a class="ha" id="at1" th:text="${var.s_hid+1}+'L'"></a>
+								</div>
+							</div>
 						</div>
+
 						</td>
 						</tr>
 						</table>
@@ -238,5 +259,73 @@
 	  function tijiao(){
 		  document.getElementById("f1").submit();
 	  }
+
+	//楼中楼回复
+	var s_hid=0;
+	$(".lhf").each(function() {
+		var div = $(this);
+		$(div).click(function(e) {
+			//楼中楼回复查询
+			var a = $(div).attr("value");
+			s_hid = parseInt(a);
+			$.ajax({
+				url:"/lzlcx",
+				data:"s_hid="+s_hid,
+				type:"get",
+				dataType:"json",
+				async:true,
+				success:function(data){
+					if($(".lzl").length>0){
+						$(".lzl").remove();
+						$(div).text("回复");
+					}else{
+						$(div).text("收起回复");
+						$(div).after("<div id = 'lzl' class='lzl'></div>");
+						$(div).after("<div id = 'divlzl' class='lzl'></div>");
+						//动态创建一个tr行标签,并且转换成jQuery对象
+						var $trTemp1 = $("<div id='hfid'></div>");
+						//往行里面追加 td单元格
+						$trTemp1.append("<input type = 'text' id='lzlid' value = '回复'/><button onclick='lzlhf()'>回复</button>");
+						$trTemp1.appendTo("#lzl");
+						for( var i = 0; i < data.length; i++ ) {
+							//动态创建一个tr行标签,并且转换成jQuery对象
+							var $trTemp = $("<tr></tr>");
+							//往行里面追加 td单元格
+							$trTemp.append("<td><img src="+data[i].s_txjpg+" width='30px' height='30px'>"+ data[i].s_name +":"+"</td>");
+							$trTemp.append("<td>"+ data[i].s_ltext +"</td>");
+							$trTemp.append("<td>"+ data[i].s_date +"</td>");
+							$trTemp.append("<td><a class='lhf' href=''>回复</a></td>");
+							$trTemp.appendTo("#divlzl");
+						}
+					}
+				},
+			});
+		});
+	});
+
+	function lzlhf(){
+		var text = document.getElementById("lzlid").value;
+		//window.location.href="/Lzlhf?sltext="+text+"&s_hid="+s_hid;
+		$.ajax({
+			url:"/lzlhf",
+			data:{s_ltext:text,s_hid:s_hid},
+			type:"get",
+			dataType:"json",
+			async:true,
+			success:function(data){
+				$("#divlzl").empty();
+				for( var i = 0; i < data.length; i++ ) {
+					//动态创建一个tr行标签,并且转换成jQuery对象
+					var $trTemp = $("<tr></tr>");
+					//往行里面追加 td单元格
+					$trTemp.append("<td><img src="+data[i].s_txjpg+" width='30px' height='30px'>"+ data[i].s_name +":"+"</td>");
+					$trTemp.append("<td>"+ data[i].s_ltext +"</td>");
+					$trTemp.append("<td>"+ data[i].s_date +"</td>");
+					$trTemp.append("<td><a class='lhf' href=''>回复</a></td>");
+					$trTemp.appendTo("#divlzl");
+				}
+			}
+		});
+	}
 	</script>
 </html>

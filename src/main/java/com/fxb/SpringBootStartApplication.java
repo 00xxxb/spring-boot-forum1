@@ -1,4 +1,4 @@
-package com.lfd;
+package com.fxb;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

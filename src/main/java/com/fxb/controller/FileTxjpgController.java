@@ -1,4 +1,4 @@
-package com.lfd.controller;
+package com.fxb.controller;
 
 import java.io.File;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.lfd.bean.S_User;
-import com.lfd.service.IndexService;
+import com.fxb.bean.S_User;
+import com.fxb.service.IndexService;
 
 /*
  * 头像与类似图片等文件上传
@@ -33,7 +33,7 @@ public class FileTxjpgController {
 	// 上传文件路径
 /*	String path = request.getServletContext().getRealPath(
 	"/upload/");*/
-	String path = "D:/IDEAProject/SZKY/src/main/resources/static/";
+	String path = "D:/IDEAProject/spring-boot-forum/src/main/resources/static/";
 	System.out.println("path = " + path);
 	// 上传文件名
 	String filename = "images/"+file.getOriginalFilename();

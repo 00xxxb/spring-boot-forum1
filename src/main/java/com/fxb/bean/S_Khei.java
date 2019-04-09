@@ -1,4 +1,4 @@
-package com.lfd.bean;
+package com.fxb.bean;
 
 import java.io.Serializable;
 

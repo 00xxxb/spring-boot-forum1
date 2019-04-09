@@ -1,6 +1,6 @@
-package com.lfd.aspect;
+package com.fxb.aspect;
 
-import com.lfd.service.IndexService;
+import com.fxb.service.IndexService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -17,7 +17,7 @@ public class MyAspect {
     @Autowired
     IndexService service;
 
-    @Pointcut("@annotation(com.lfd.annotation.MyAnnotation)")
+    @Pointcut("@annotation(com.fxb.annotation.MyAnnotation)")
     public void MyMethod( ) {
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="com.lfd.mapper.TieziMapper">
+<mapper namespace="com.fxb.mapper.TieziMapper">
   <resultMap type="S_Khei" id="S_KheiMap">
   <id property="s_tid" column="s_tid"/>
   <result property="s_id" column="s_id"/>
@@ -36,7 +36,7 @@
   <select id="LookTz" resultMap="S_KheiMap">
   SELECT * FROM Sz_Tiezi
   </select>
-  <!-- 根据所有帖子数量 -->
+  <!-- 统计所有帖子数量 -->
   <select id="ConutTz" parameterType="int" resultType="java.lang.Integer">
   select count(*) from Sz_Tiezi 
   </select>
@@ -105,9 +105,11 @@
   </insert>
   <!-- 查询当前帖子所有回复 -->
   <select id="LookHf" resultMap="S_HuifMap">
-  select * from
-  (select s_htext,a.s_tid,s_name,a.s_date,s_hid,s_txjpg from HuiFu a,Sz_Tiezi b,Sz_User c where a.s_tid = b.s_tid and a.s_id = c.s_id) a 
-  where a.s_tid=#{s_tid}
+    select b.*,count(a.s_ltext) s_hfl from
+    (select * from HuiFuLzl) a
+    right join
+    (select distinct s_htext,a.s_tid,s_name,a.s_date,s_hid,s_txjpg from HuiFu a,Sz_Tiezi b,Sz_User c where a.s_tid = #{s_tid} and a.s_id = c.s_id) b
+    on a.s_hid = b.s_hid group by s_hid order by s_hid
   </select>
   <!-- 回帖 -->
   <insert id="HuiT">

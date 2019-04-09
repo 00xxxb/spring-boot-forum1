@@ -40,13 +40,13 @@
 		<!-- Header -->
 			<header id="header">
 				<a class="logo" th:href="@{/}" title="刷新">I❤SZ</a>
-				<div id="img1">
-				<a th:onclick="login()" id = "user" th:if="${session.s_name==null}"><img src="images/用户图标.png" width="20px" height="20px" title="用户"/></a>
-				<a th:onclick="login()" id = "user" th:if="${session.s_name!=null}"><img th:src="${session.s_txjpg}" width="20px" height="20px" title="用户"/></a>
-				</div>
-				<nav>
-					<a href="#menu">Menu</a>
-				</nav>
+				<!--<div id="img1">-->
+				<!--<a th:onclick="login()" id = "user" th:if="${session.s_name==null}"><img src="images/用户图标.png" width="20px" height="20px" title="用户"/></a>-->
+				<!--<a th:onclick="login()" id = "user" th:if="${session.s_name!=null}"><img th:src="${session.s_txjpg}" width="20px" height="20px" title="用户"/></a>-->
+				<!--</div>-->
+				<!--<nav>-->
+					<!--<a href="#menu">Menu</a>-->
+				<!--</nav>-->
 			</header>
             <div class="login-box" id="login-box" style="display:none;" th:if="${session.s_name==null}">
             <form th:action="@{/login}" th:object="${client}" method="post">
@@ -82,14 +82,14 @@
     		</div>
     		
 		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a th:href="@{demo}">Home</a></li>
-					<li><a th:href="@{elements}">Elements</a></li>
-					<li><a th:href="@{generic}">Generic</a></li>
-					<li><a th:href="@{generic}">设置</a></li>
-				</ul>
-			</nav>
+			<!--<nav id="menu">-->
+				<!--<ul class="links">-->
+					<!--<li><a th:href="@{demo}">Home</a></li>-->
+					<!--<li><a th:href="@{elements}">Elements</a></li>-->
+					<!--<li><a th:href="@{generic}">Generic</a></li>-->
+					<!--<li><a th:href="@{generic}">设置</a></li>-->
+				<!--</ul>-->
+			<!--</nav>-->
 
 		<!-- Banner -->
 			<section id="banner">
@@ -113,9 +113,9 @@
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-vcard-o"><span class="label">Icon</span></a>
-									<h3>树屋·树洞</h3>
+									<h3> </h3>
 								</header>
-								<p>在这里,我们为您寄存秘密、心事。拨动你的心弦,倾听来自心海的回音!.</p>
+								<p>敬请期待.....</p>
 							</div>
 						</section>
 						<section>
@@ -131,36 +131,36 @@
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-floppy-o"><span class="label">Icon</span></a>
-									<h3>Ipsum consequat</h3>
+									<h3> </h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<p>敬请期待.....</p>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-line-chart"><span class="label">Icon</span></a>
-									<h3>Interdum gravida</h3>
+									<h3></h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<p>敬请期待......</p>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
-									<h3>Faucibus consequat</h3>
+									<h3> </h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<p>敬请期待.....</p>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-qrcode"><span class="label">Icon</span></a>
-									<h3>Accumsan viverra</h3>
+									<h3> </h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<p>敬请期待.....</p>
 							</div>
 						</section>
 					</div>

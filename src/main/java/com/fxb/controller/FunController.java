@@ -1,4 +1,4 @@
-package com.lfd.controller;
+package com.fxb.controller;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lfd.bean.S_User;
-import com.lfd.service.IndexService;
+import com.fxb.bean.S_User;
+import com.fxb.service.IndexService;
 
 @Controller
 public class FunController {

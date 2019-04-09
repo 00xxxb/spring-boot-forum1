@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<!-- 楼中楼实体类 -->
+<mapper namespace="com.fxb.mapper.TieziMapper">
+  <resultMap type="S_HuiFuLzl" id="S_HuiFuLzlMap">
+  <id property="s_lid" column="s_lid"/>
+  <result property="s_ltext" column="s_ltext"/>
+  <result property="s_id" column="s_id"/>
+  <result property="s_hid" column="s_hid"/>
+  <result property="s_tid" column="s_tid"/>
+  <result property="s_date" column="s_date"/>
+  <result property="s_name" column="s_name"/>
+  <result property="s_txjpg" column="s_txjpg"/>
+  </resultMap>
+<!-- 查询所有楼中楼回复 -->
+<select id="CxLzl" resultMap="S_HuiFuLzlMap">
+select * from 
+(select distinct a.s_lid,a.s_ltext,a.s_hid,a.s_tid,a.s_id,a.s_date,c.s_name,c.s_txjpg from HuiFuLzl a,HuiFu d,Sz_User c
+where a.s_id = c.s_id and a.s_tid = d.s_tid and a.s_hid = d.s_hid) a
+where a.s_tid = #{s_tid} and a.s_hid = #{s_hid}
+</select>
+<!-- 楼中楼回复 -->
+<insert id="LzlHuiF">
+insert into HuiFuLzl values (s_lid,#{s_ltext},#{s_hid},#{s_tid},#{s_id},#{s_date})
+</insert>
+</mapper>
